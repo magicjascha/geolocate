@@ -1,19 +1,15 @@
-$LOAD_PATH << "."
-require 'geolocate'
+# $LOAD_PATH << "."
 require "test/unit"
 require 'net/http'
-require 'openssl'
 require 'json'
 require 'rack/test'
 require 'byebug'
 require 'capybara/minitest'
 require "minitest/autorun"
 
-
-# class TestGeolocate < Test::Unit::TestCase
 class ApiTest < Minitest::Test
   include Rack::Test::Methods
-  
+  load 'geolocate' unless defined?(Geolocate)
   def app
     Geolocate
   end

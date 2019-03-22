@@ -1,11 +1,11 @@
-$LOAD_PATH << "."
-require 'geolocate'
+# $LOAD_PATH << "."
 require 'byebug'
 require 'capybara/minitest'
 require "minitest/autorun"
 
 class IntegrationTest < Minitest::Test
   include Capybara::DSL
+  load 'geolocate' unless defined?(Geolocate)
   Capybara.app = Geolocate
   
   def teardown
