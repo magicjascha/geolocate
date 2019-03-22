@@ -29,7 +29,7 @@ class ApiTest < Minitest::Test
   def test_api_with_valid_address
     address = "Checkpoint+Charlie"
     url = "/locate?address="+address
-    basic_authorize 'foo', 'bar'
+    basic_authorize ENV["loc_username"], ENV["loc_password"]
     response = get url      
     #test format of response
     res_parsed = JSON.parse(response.body)
@@ -40,7 +40,7 @@ class ApiTest < Minitest::Test
   def test_api_with_non_ascii_characters_address
     address = CGI.escape("Dönerladen, Friedrichstraße")
     url = "/locate?address="+address
-    basic_authorize 'foo', 'bar'
+    basic_authorize ENV["loc_username"], ENV["loc_password"]
     response = get url      
     #test format of response
     res_parsed = JSON.parse(response.body)
@@ -50,7 +50,7 @@ class ApiTest < Minitest::Test
   
   def test_api_with_empty_address_query
     url = "/locate?address="
-    basic_authorize 'foo', 'bar'
+    basic_authorize ENV["loc_username"], ENV["loc_password"]
     response = get url    
     #test format
     res_parsed = JSON.parse(response.body)
@@ -60,7 +60,7 @@ class ApiTest < Minitest::Test
   def test_api_with_unfindable_address
     address = "aaaaaaaaaaaaaaaa"
     url = "/locate?address="+address
-    basic_authorize 'foo', 'bar'
+    basic_authorize ENV["loc_username"], ENV["loc_password"]
     response = get url    
     #test format
     res_parsed = JSON.parse(response.body)

@@ -8,15 +8,15 @@ require 'custom_error'
 require 'erb'
 require 'cgi'
 
-
 set :show_exceptions, false
 set :raise_errors, true
 
 
 class Geolocate < Sinatra::Application
+  set(:port, ENV["loc_port"]) if ENV["loc_port"]
   
   use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == 'foo' && password == 'bar'
+    username == ENV["loc_username"] && password == ENV["loc_password"]
   end
 
   get '/search' do
