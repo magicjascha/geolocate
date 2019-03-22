@@ -9,8 +9,7 @@ require 'erb'
 require 'cgi'
 
 set :show_exceptions, false
-set :raise_errors, true
-
+# set :raise_errors, true #for development
 
 class Geolocate < Sinatra::Application
   set(:port, ENV["loc_port"]) if ENV["loc_port"]
