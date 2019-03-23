@@ -14,7 +14,7 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_form
-    page.driver.browser.basic_authorize(ENV["loc_username"],ENV["loc_password"])
+    page.driver.browser.basic_authorize("foo", "bar")
     visit('/search')
     assert page.has_content?('Address')
     has_field?('address')
@@ -25,7 +25,7 @@ class IntegrationTest < Minitest::Test
   end
   
   def test_form_with_non_ascii_characters
-    page.driver.browser.basic_authorize(ENV["loc_username"],ENV["loc_password"])
+    page.driver.browser.basic_authorize("foo", "bar")
     visit('/search')
     assert page.has_content?('Address')
     has_field?('address')
