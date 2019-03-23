@@ -8,7 +8,7 @@ At https://ancient-temple-97909.herokuapp.com you can find a sample.
 
 Type in credentials for http authentication: username "sample_user" and password "sample_password".
 
-You can either type in your address (e.g. "Checkpoint Charlie") at ```/search``` or call the api directly with ```/locate?address=Checkpoint Charlie```
+You can either type in your address (e.g. "Checkpoint Charlie") or call the api directly with ```/locate?address=Checkpoint Charlie```
 
 
 ## Configure for production
