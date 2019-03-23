@@ -4,7 +4,7 @@ Small webserver app to get coordinates for a given address from openstreetmap. T
 
 ## Have a look at the app
 
-At ... you can find a sample.
+At https://ancient-temple-97909.herokuapp.com you can find a sample.
 
 Type in credentials for http authentication: username "sample_user" and password "sample_password".
 
@@ -13,7 +13,11 @@ You can either type in your address (e.g. "Checkpoint Charlie") at ```/search```
 
 ## Configure for production
 
-The app is protected by a http basic authentication. In a production environment you have to set the credentials with environment variables auth_username and auth_password. (In development mode these are: username 'foo', password 'bar'). In production mode ssl is enforced to ensure those secrets are safe.
+Clone the project and install the gems from the gemfile
+
+```bundle install```
+
+The app is protected by a http basic authentication. In a production environment you have to set the credentials with environment variables auth_username and auth_password. (In development mode these are not configureable: username 'foo', password 'bar'). In production mode ssl is enforced to ensure those secrets are safe.
 
 ## Start the app
 
@@ -29,7 +33,7 @@ You can add option ```-p [portnumber]``` to choose another port.
 
 ## For Development
 
-# Test
+### Test
 
 in the terminal you can run all tests at once with
 
