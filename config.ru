@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 require 'sinatra'
-load './geolocate'
+require_relative 'geolocate'
 
 run Geolocate

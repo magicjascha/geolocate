@@ -1,15 +1,16 @@
-# $LOAD_PATH << "."
-require "test/unit"
+require './geolocate'
+require 'test/unit'
 require 'net/http'
 require 'json'
 require 'rack/test'
 require 'byebug'
 require 'capybara/minitest'
-require "minitest/autorun"
+require 'minitest/autorun'
+
 
 class ApiTest < Minitest::Test
   include Rack::Test::Methods
-  load 'geolocate' unless defined?(Geolocate)
+  
   def app
     Geolocate
   end

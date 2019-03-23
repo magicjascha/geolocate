@@ -7,8 +7,6 @@ require 'erb'
 require 'cgi'
 require 'rack/ssl-enforcer'
 
-
-
 class Geolocate < Sinatra::Application
   configure do
     set :show_exceptions, false
