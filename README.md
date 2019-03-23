@@ -1,10 +1,19 @@
 # Geolocate
 
-Small webserver app to get coordinates for a given address from openstreetmap. This is just an exercise.
+Small webserver app to get coordinates for a given address from openstreetmap. This project was just an exercise.
 
-## Configure
+## Have a look at the app
 
-The app is protected by a http basic authentication. In a production environment you have to set the credentials with environment variables auth_username and auth_password. In development mode these are: username 'foo', password 'bar'.
+At ... you can find a sample.
+
+Type in credentials for http authentication: username "sample_user" and password "sample_password".
+
+You can either type in your address (e.g. "Checkpoint Charlie") at ```/search``` or call the api directly with ```/locate?address=Checkpoint Charlie```
+
+
+## Configure for production
+
+The app is protected by a http basic authentication. In a production environment you have to set the credentials with environment variables auth_username and auth_password. (In development mode these are: username 'foo', password 'bar'). In production mode ssl is enforced to ensure those secrets are safe.
 
 ## Start the app
 
@@ -12,13 +21,11 @@ in the apps root folder run
 
 ```rackup```
 
-you can add option ```-p [portnumber]``` to choose another port.
+or from anywhere
 
-## Use
+```rackup [path_to_apps_root_folder]/config.ru```
 
-Type in credentials for http authentication (in development mode username 'foo', password 'bar')
-
-You can either type in your address (e.g. "Checkpoint Charlie") at ```/search``` or call the api directly with ```/locate?address=Checkpoint Charlie```
+You can add option ```-p [portnumber]``` to choose another port.
 
 ## For Development
 
