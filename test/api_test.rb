@@ -50,7 +50,7 @@ class ApiTest < Minitest::Test
     response = get url    
     #test format
     res_parsed = JSON.parse(response.body)
-    assert_equal({"AddressEmpty"=>"Type in your address at /search e.g. 'Checkpoint Charlie' or access query '/locate?address=Checkpoint Charlie'"}, res_parsed)
+    assert_equal({"AddressEmpty"=>"Type in your address e.g. 'Checkpoint Charlie' or access query '/locate?address=Checkpoint Charlie'"}, res_parsed)
   end
   
   def test_api_with_unfindable_address

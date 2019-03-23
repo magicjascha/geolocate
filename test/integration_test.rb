@@ -15,7 +15,7 @@ class IntegrationTest < Minitest::Test
 
   def test_form
     page.driver.browser.basic_authorize("foo", "bar")
-    visit('/search')
+    visit('/')
     assert page.has_content?('Address')
     has_field?('address')
     assert page.has_button?('Submit')
@@ -26,7 +26,7 @@ class IntegrationTest < Minitest::Test
   
   def test_form_with_non_ascii_characters
     page.driver.browser.basic_authorize("foo", "bar")
-    visit('/search')
+    visit('/')
     assert page.has_content?('Address')
     has_field?('address')
     assert page.has_button?('Submit')

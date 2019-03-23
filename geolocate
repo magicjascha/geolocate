@@ -28,7 +28,7 @@ class Geolocate < Sinatra::Application
     username == settings.user && password == settings.pw 
   end
   
-  get '/search' do
+  get '/' do
     erb :locate
   end
 
@@ -65,7 +65,7 @@ class Geolocate < Sinatra::Application
 
   error CustomError::AddressEmpty do
     content_type :json
-    {AddressEmpty: "Type in your address at /search e.g. 'Checkpoint Charlie' or access query '/locate?address=Checkpoint Charlie'"}.to_json
+    {AddressEmpty: "Type in your address e.g. 'Checkpoint Charlie' or access query '/locate?address=Checkpoint Charlie'"}.to_json
   end
 
   error SocketError do
