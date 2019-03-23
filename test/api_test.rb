@@ -14,20 +14,21 @@ class ApiTest < Minitest::Test
   def app
     Geolocate
   end
-  
   def test_false_credentials
     address = "Checkpoint+Charlie"
     url = "/locate?address="+address
     basic_authorize 'false', 'credentials'
     response = get url
-    assert "[]", response.body
+    #access denied, responsebody is empty
+    assert_equal 'Basic realm="Protected Area"', response.headers["WWW-Authenticate"]
+    assert_equal "", response.body
   end
   
   def test_api_with_valid_address
     address = "Checkpoint+Charlie"
     url = "/locate?address="+address
     basic_authorize "foo", "bar"
-    response = get url      
+    response = get url
     #test format of response
     res_parsed = JSON.parse(response.body)
     assert(!!res_parsed[0].match(/\d?\d\.\d{7}/))
