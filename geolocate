@@ -5,17 +5,29 @@ require 'json'
 require_relative 'lib/custom_error'
 require 'erb'
 require 'cgi'
+require 'rack/ssl-enforcer'
 
-set :show_exceptions, false
-# set :raise_errors, true #for development
+
 
 class Geolocate < Sinatra::Application
-  set(:port, ENV["loc_port"]) if ENV["loc_port"]
+  configure do
+    set :show_exceptions, false
+  end  
+  configure :development do
+    set :raise_errors, true
+    set :user, 'foo'
+    set :pw, 'bar'
+  end
+  configure :production do
+    set :user, ENV["auth_username"]
+    set :pw, ENV["auth_password"] 
+    use Rack::SslEnforcer
+  end
   
   use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == ENV["loc_username"] && password == ENV["loc_password"]
+    username == settings.user && password == settings.pw 
   end
-
+  
   get '/search' do
     erb :locate
   end
@@ -75,6 +87,5 @@ class Geolocate < Sinatra::Application
     content_type :json
     {BadResponse: "Sorry. Our geolocation provider is returning nonsense"}.to_json
   end
-  run! if app_file == $0
 end
   

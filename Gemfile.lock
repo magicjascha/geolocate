@@ -26,6 +26,7 @@ GEM
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
+    rack-ssl-enforcer (0.2.9)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (12.3.2)
@@ -46,6 +47,7 @@ DEPENDENCIES
   byebug
   capybara
   minitest-capybara
+  rack-ssl-enforcer
   sinatra
 
 BUNDLED WITH
